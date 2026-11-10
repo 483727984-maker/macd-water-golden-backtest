@@ -4,6 +4,20 @@ A clean, reproducible backtest of a **MACD “water” golden-cross** long-only 
 
 > Portfolio note: this repo shows the research pipeline — rule definition → data → backtest with costs → drawdown diagnosis — not just a return curve.
 
+## Charts
+
+### Equity curve
+![Equity curve](docs/figures/equity_curve.png)
+
+### Drawdown
+![Drawdown](docs/figures/drawdown.png)
+
+### Calendar-year returns
+![Yearly returns](docs/figures/yearly_returns.png)
+
+### Holdings & turnover
+![Holdings and turnover](docs/figures/holdings_turnover.png)
+
 ## Strategy rules
 
 | Item | Rule |
@@ -16,6 +30,17 @@ A clean, reproducible backtest of a **MACD “water” golden-cross** long-only 
 | Universe | All A-shares (incl. historical names), 2010-01-04 → 2026-11-09 |
 | Benchmark | CSI 300 (`000300.SH`) |
 
+### Rebalancing（调仓）
+
+Yes — the book is **rebalanced daily to equal weight**.
+
+- Each stock independently: buy on water golden-cross, sell on death cross
+- Every day, capital is spread **equally** across all currently held names
+- When the holding set changes (new entries / exits), weights are reset → this creates turnover even without a calendar rebalance schedule
+- Measured average daily two-way turnover ≈ **39%**
+
+So this is **signal-driven trading + daily equal-weight rebalancing**, not buy-and-hold of fixed lots.
+
 ## Transaction costs
 
 | Side | Components | Rate |
@@ -23,7 +48,7 @@ A clean, reproducible backtest of a **MACD “water” golden-cross** long-only 
 | Buy | commission 3 bps + slippage 10 bps | **0.13%** |
 | Sell | commission 3 bps + stamp tax 5 bps + slippage 10 bps | **0.18%** |
 
-Costs are charged on **daily equal-weight turnover** (entries, exits, and rebalance).
+Costs are charged on **daily equal-weight turnover**.
 
 ## Key results (with costs)
 
@@ -46,10 +71,12 @@ Other diagnostics:
 
 ```text
 macd_water_golden/
-├── download_data.py   # Tushare daily bars + CSI 300 (resumable cache)
-├── backtest.py        # MACD signals, equal-weight book, costs, metrics
-├── analyze_dd.py      # Drawdown episode helper
-├── output/            # Saved summary / yearly / monthly / daily nav
+├── download_data.py      # Tushare daily bars + CSI 300 (resumable cache)
+├── backtest.py           # MACD signals, equal-weight book, costs, metrics
+├── plot_results.py       # Build charts under docs/figures/
+├── analyze_dd.py         # Drawdown episode helper
+├── docs/figures/         # Equity / drawdown / yearly / turnover charts
+├── output/               # summary / yearly / monthly / daily nav
 └── README.md
 ```
 
@@ -58,7 +85,7 @@ macd_water_golden/
 ## Reproduce
 
 ```bash
-pip install tushare pandas numpy pyarrow
+pip install tushare pandas numpy pyarrow matplotlib
 
 # set token
 # Windows PowerShell:
@@ -66,6 +93,7 @@ $env:TUSHARE_TOKEN="your_token"
 
 python download_data.py
 python backtest.py
+python plot_results.py
 ```
 
 Outputs:
@@ -74,6 +102,7 @@ Outputs:
 - `output/yearly.csv` — calendar-year returns
 - `output/monthly.csv` — month-end NAV sample
 - `output/nav.csv` — daily NAV / returns / costs
+- `docs/figures/*.png` — charts embedded above
 
 ## Disclaimer
 
