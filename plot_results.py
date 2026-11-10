@@ -49,7 +49,7 @@ def main() -> None:
     axes[1].legend(frameon=False, loc="upper left")
     fig.autofmt_xdate()
     fig.tight_layout()
-    fig.savefig(FIG / "equity_curve.png", dpi=160)
+    fig.savefig(FIG / "equity_curve_v2.png", dpi=160)
     plt.close(fig)
 
     # 2) Drawdown
@@ -62,7 +62,7 @@ def main() -> None:
     ax.legend(frameon=False)
     fig.autofmt_xdate()
     fig.tight_layout()
-    fig.savefig(FIG / "drawdown.png", dpi=160)
+    fig.savefig(FIG / "drawdown_v2.png", dpi=160)
     plt.close(fig)
 
     # 3) Yearly returns
@@ -79,7 +79,7 @@ def main() -> None:
     ax.set_ylabel("Return (%)")
     ax.legend(frameon=False)
     fig.tight_layout()
-    fig.savefig(FIG / "yearly_returns.png", dpi=160)
+    fig.savefig(FIG / "yearly_returns_v2.png", dpi=160)
     plt.close(fig)
 
     # 4) Holdings + turnover proxy
@@ -110,7 +110,7 @@ def main() -> None:
     ax1.legend(lines1 + lines2, labels1 + labels2, frameon=False, loc="upper left")
     fig.autofmt_xdate()
     fig.tight_layout()
-    fig.savefig(FIG / "holdings_turnover.png", dpi=160)
+    fig.savefig(FIG / "holdings_turnover_v2.png", dpi=160)
     plt.close(fig)
 
     print("wrote figures to", FIG)

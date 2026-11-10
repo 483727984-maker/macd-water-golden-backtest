@@ -7,16 +7,16 @@ A clean, reproducible backtest of a **MACD “water” golden-cross** long-only 
 ## Charts
 
 ### Equity curve
-![Equity curve](docs/figures/equity_curve.png)
+![Equity curve](docs/figures/equity_curve_v2.png)
 
 ### Drawdown
-![Drawdown](docs/figures/drawdown.png)
+![Drawdown](docs/figures/drawdown_v2.png)
 
 ### Calendar-year returns
-![Yearly returns](docs/figures/yearly_returns.png)
+![Yearly returns](docs/figures/yearly_returns_v2.png)
 
 ### Holdings & turnover
-![Holdings and turnover](docs/figures/holdings_turnover.png)
+![Holdings and turnover](docs/figures/holdings_turnover_v2.png)
 
 ## Strategy rules
 
