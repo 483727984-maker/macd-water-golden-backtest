@@ -1,0 +1,42 @@
+{
+  "start": "20100104",
+  "end": "20261109",
+  "n_days": 4090,
+  "n_stocks_universe": 5857,
+  "total_return": 4.982953522282783,
+  "ann_return": 0.11652548452983469,
+  "vol_ann": 0.2948950589785078,
+  "sharpe": 0.3951422073108629,
+  "max_drawdown": -0.8038868673428271,
+  "gross_total_return": 71.60075402108066,
+  "gross_ann_return": 0.3021453175052631,
+  "gross_sharpe": 1.0248024152691848,
+  "gross_max_drawdown": -0.6559330693404906,
+  "bench_total_return": 0.13438208633690762,
+  "bench_ann_return": 0.007799007502174549,
+  "bench_max_drawdown": -0.4669625064100903,
+  "excess_total": 4.848571435945876,
+  "avg_holdings": 368.6413202933985,
+  "exposure": 0.9995110024449878,
+  "avg_daily_cost": 0.0006105423087689915,
+  "avg_daily_turnover": 0.3939376990086246,
+  "total_cost_drag": 66.61780049879788,
+  "n_golden_signals": 184558,
+  "n_death_signals": 559088,
+  "assumptions": {
+    "signal": "MACD water golden cross (DIF upcross DEA with DIF>0 and DEA>0)",
+    "exit": "any death cross (DIF downcross DEA)",
+    "macd": "EMA12/26/9 on raw close",
+    "portfolio": "equal-weight all active holdings; cash return=0 when empty",
+    "execution": "signal at T close, earn T+1 return (1-day lag)",
+    "costs": {
+      "commission": 0.0003,
+      "stamp_sell": 0.0005,
+      "slippage_one_way": 0.001,
+      "buy_cost": 0.0013,
+      "sell_cost": 0.0018,
+      "method": "daily equal-weight turnover"
+    },
+    "benchmark": "000300.SH"
+  }
+}
